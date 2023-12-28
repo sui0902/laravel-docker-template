@@ -15,6 +15,7 @@
           <!-- 編集 -->
           <a href="{{ route('todo.show', $todo->id) }}" class="list-group-item list-group-item-action">
             {{ $todo->content }}
+            <!-- contentはプロパティ -->
           </a>
         </div>
       @endforeach
