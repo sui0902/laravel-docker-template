@@ -28,7 +28,7 @@ class TodoController extends Controller//Routeが実行されたときにイン�
         // return view('todo.index', ['todos' => $this->todo->all()]) 上記と同じ
     }
 
-    //追加
+    //新規作成処理 追加
     public function create()
     {
         return view('todo.create');
@@ -53,7 +53,7 @@ class TodoController extends Controller//Routeが実行されたときにイン�
         // 詳細画面のBladeを作成して、取得したTodoのデータを表示
         return view('todo.show', ['todo' => $todo]);
     }
-     // 追加
+     //編集画面 追加
      public function edit($id)
      {
          $todo = $this->todo->find($id);
@@ -75,14 +75,20 @@ class TodoController extends Controller//Routeが実行されたときにイン�
  
      }
 
-     // 追加
+     //削除処理 追加
     public function delete($id)
     {
-        // 追加
         $todo = $this->todo->find($id);
         $todo->delete();
         return redirect()->route('todo.index');
-
+    }
+    //完了処理 追加
+    public function complete($id)
+    {
+    $todo = $this->todo->find($id);
+    $todo->is_completed = !$todo->is_completed;
+    $todo->save();//UPDATE文実行してレコードの内容を更新
+    return response()->json(['is_completed' => $todo->is_completed]);//JOIN形式でレスポンスを返す（非同期処理）変更があった情報のみを返す
     }
 
 }
