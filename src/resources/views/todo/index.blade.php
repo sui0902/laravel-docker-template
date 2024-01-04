@@ -11,8 +11,17 @@
       </div>
       <div class="list-group list-group-flush">
       @foreach ($todos as $todo)
+        <!-- <div class="d-flex">
+           //編集
+          <a href="{{ route('todo.show', $todo->id) }}" class="list-group-item list-group-item-action">
+            {{ $todo->content }}
+             ↑ contentはプロパティ
+          </a>
+        </div> -->
         <div class="d-flex">
-          <!-- 編集 -->
+          <form action="{{ route('todo.complete', $todo->id) }}" class="px-3 my-auto todo-status-form">
+            <input type="checkbox" class="form-control todo-status-button" name="id" value={{ $todo->content }} @if ($todo->is_completed) checked @endif>
+          </form>
           <a href="{{ route('todo.show', $todo->id) }}" class="list-group-item list-group-item-action">
             {{ $todo->content }}
           </a>
@@ -22,4 +31,6 @@
     </div>
   </div>
 </div>
+<!-- 追加 -->
+<script src="{{ asset('js/index.js') }}"></script>
 @endsection

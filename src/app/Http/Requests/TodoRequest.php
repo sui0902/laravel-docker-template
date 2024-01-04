@@ -29,7 +29,7 @@ class TodoRequest extends FormRequest
         return [
             // バリデーションのルールを追加
             // 連想配列のキーがリクエストパラメータ名を表す。その値がバリゲーションルール。
-            'content' => 'required|max:255',
+            'content' => 'required|max:255',//inputタグのname属性と一致したものを右のルールで検証
             // required:入力必須であること
             // max:?:入力された値が？文字以内であること
         ];
