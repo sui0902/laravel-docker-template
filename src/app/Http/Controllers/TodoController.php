@@ -85,10 +85,10 @@ class TodoController extends Controller//Routeが実行されたときにイン�
     //完了処理 追加
     public function complete($id)
     {
-    $todo = $this->todo->find($id);
-    $todo->is_completed = !$todo->is_completed;
-    $todo->save();//UPDATE文実行してレコードの内容を更新
-    return response()->json(['is_completed' => $todo->is_completed]);//JOIN形式でレスポンスを返す（非同期処理）変更があった情報のみを返す
+        $todo = $this->todo->find($id);
+        $todo->is_completed = !$todo->is_completed;
+        $todo->save();//UPDATE文実行してレコードの内容を更新
+        return response()->json(['is_completed' => $todo->is_completed]);//JOIN形式でレスポンスを返す（非同期処理）変更があった情報のみを返す
     }
 
 }
